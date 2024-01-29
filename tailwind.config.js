@@ -14,14 +14,20 @@ module.exports = {
         "khaki": "#BFA89E",
         "cinereous": "#8B786D",
         "med-gray": "#757575",
+        "dark-red": "#6F1E1E",
+        "dark-gray": "#464947",
+        "light-gray": "#5E625F",
+        "green": "#44AA55",
       },
       fontFamily: {
-        montserrat: "Montserrat",
-        "open-sans": "'Open Sans'",
-        "merge-one": "'Merge One'",
-        "original-surfer": "'Original Surfer'",
-        salsa: "Salsa"
+        "kite-one": "Kite One",
+        "karma": "Karma",
       },
+      dropShadow: {
+        'custom': '5px 6px 4px rgba(0, 0, 0, 0.35)',
+        'custom-h2': '5px 5px 3px rgba(0, 0, 0, 0.25)',
+        'custom-h3': '3px 3px 2px rgba(0, 0, 0, 0.25)',
+      }
     },
   },
   plugins: [],
