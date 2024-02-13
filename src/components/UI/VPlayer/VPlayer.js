@@ -5,7 +5,7 @@ export default function VPlayer({
   setDuration,
   setIsReady, setPlayed, volume,
 }) {
-  console.log(volume);
+
   return (
     <ReactPlayer
       ref={playerRef}

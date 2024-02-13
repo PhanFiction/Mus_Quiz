@@ -52,12 +52,11 @@ export const generateQuizOptions = (quiz) => {
   };
 }
 
-export const getRandomTimestamp = (duration) => {
-  const minGap = 15; // gap dist of song
+export const getRandomTimestamp = (duration, songGap) => {
   let maxStartSeconds;
 
   const randomSeconds = Math.floor(Math.random() * duration); // randomly choose a timeStamp in the song
-  maxStartSeconds = randomSeconds - minGap < 0 ? randomSeconds + minGap : randomSeconds - minGap;
+  maxStartSeconds = randomSeconds - songGap < 0 ? randomSeconds + songGap: randomSeconds - songGap;
 
   if (maxStartSeconds > randomSeconds) return { startTime: randomSeconds, endTime: maxStartSeconds};
   return { startTime: maxStartSeconds, endTime: randomSeconds};

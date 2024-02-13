@@ -14,12 +14,20 @@ const VPlayer = dynamic(() => import("../components/UI/VPlayer/VPlayer"), {
   ssr: false,
 });
 
-const options = [
+const quizOptions = [
   { value: 'quiz_1', label: 'Quiz 1' },
   { value: 'quiz_2', label: 'Quiz 2' },
   { value: 'quiz_3', label: 'Quiz 3' },
   { value: 'quiz_4', label: 'Quiz 4' },
 ]
+
+const timerOptions = [
+  { value: 5, label: '5' },
+  { value: 10, label: '10' },
+  { value: 15, label: '15' },
+  { value: 30, label: '30' },
+]
+
 
 export default function Page() {
   const playerRef = useRef();
@@ -37,6 +45,7 @@ export default function Page() {
   const [page, setPage] = useState(0);
   const [reset, setReset] = useState(false);
   const [volume, setVolume] = useState(100);
+  const [timer, setSongTimer] = useState(5);
 
   useEffect(() => {
     if (isReady) {
@@ -56,12 +65,12 @@ export default function Page() {
 
   useEffect(() => {
     generateRandomQuiz();
-    if(isReady) playRandom();
+    if (isReady) playRandom();
   }, [selectedOption]);
 
   // Function to Randomly go to the timestamp
   const setTimeStamp = () => {
-    const { startTime, endTime } = getRandomTimestamp(duration); // returns start and end time stamp
+    const { startTime, endTime } = getRandomTimestamp(duration, timer); // returns start and end time stamp
     setStart(startTime);
     setEnd(endTime);
     playerRef.current.seekTo(startTime, "seconds");
@@ -84,6 +93,9 @@ export default function Page() {
 
   // Changes the Quiz to which 
   const quizChange = (selectedOption) => setSelectedOption(selectedOption.value);
+
+  // Changes song timer
+  const songTimer = (selectedTimer) => setSongTimer(selectedTimer.value);
 
   const generateRandomQuiz = () => {
     const songQuiz = generateQuizOptions(selectedOption);
@@ -170,12 +182,21 @@ export default function Page() {
                   onChange={(e) => {setVolume(e.target.value)}}
                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 mb-4"
                 />
-                <div className='w-2/4'>
-                  <Select
-                    options={options}
-                    defaultValue={options[0]}
-                    onChange={quizChange}
-                  />
+                <div className='flex gap-2'>
+                  <div className='w-2/4'>
+                    <Select
+                      options={quizOptions}
+                      defaultValue={quizOptions[0]}
+                      onChange={quizChange}
+                    />
+                  </div>
+                  <div className='w-2/4'>
+                    <Select
+                      options={timerOptions}
+                      defaultValue={timerOptions[0]}
+                      onChange={songTimer}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
