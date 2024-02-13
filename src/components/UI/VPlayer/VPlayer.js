@@ -3,9 +3,9 @@ import ReactPlayer from "react-player";
 export default function VPlayer({ 
   playerRef, songLink, isPlaying, 
   setDuration,
-  setIsReady, setPlayed,
+  setIsReady, setPlayed, volume,
 }) {
-
+  console.log(volume);
   return (
     <ReactPlayer
       ref={playerRef}
@@ -15,6 +15,7 @@ export default function VPlayer({
       onReady={setIsReady}
       onDuration={(videoDuration) => setDuration(videoDuration)}
       onProgress={(progress) => setPlayed(progress.playedSeconds)}
+      volume={volume / 100}
     />
   )
 }

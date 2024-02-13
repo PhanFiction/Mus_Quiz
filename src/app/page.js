@@ -36,6 +36,7 @@ export default function Page() {
   const [videoLink, setVideoLink] = useState(null);
   const [page, setPage] = useState(0);
   const [reset, setReset] = useState(false);
+  const [volume, setVolume] = useState(100);
 
   useEffect(() => {
     if (isReady) {
@@ -58,13 +59,15 @@ export default function Page() {
     if(isReady) playRandom();
   }, [selectedOption]);
 
+  // Function to Randomly go to the timestamp
   const setTimeStamp = () => {
-    const { startTime, endTime } = getRandomTimestamp(duration);
+    const { startTime, endTime } = getRandomTimestamp(duration); // returns start and end time stamp
     setStart(startTime);
     setEnd(endTime);
     playerRef.current.seekTo(startTime, "seconds");
   }
 
+  // Plays the song
   const playSong = () => {
     if (reset) {
       setReset(false);
@@ -73,10 +76,13 @@ export default function Page() {
     setIsPlaying(!isPlaying);
   }
 
+  // randomly play song
   const playRandom = () => setTimeStamp();
 
+  // reset the song back to beginning
   const resetSong = () => playerRef.current.seekTo(start, "seconds");
 
+  // Changes the Quiz to which 
   const quizChange = (selectedOption) => setSelectedOption(selectedOption.value);
 
   const generateRandomQuiz = () => {
@@ -126,6 +132,7 @@ export default function Page() {
                   setPlayed={setPlayed}
                   setIsReady={setIsReady}
                   isLoading={isLoading}
+                  volume={volume}
                 />
               </div>
               <div className='flex flex-col items-center sm:items-start gap-2 sm:gap-4'>
@@ -151,6 +158,18 @@ export default function Page() {
                     </ActionButton>
                   </div>
                 }
+                <label 
+                  for="default-range" 
+                  class="block mb-2 text-sm font-medium text-gray-900 text-dark-gray"
+                >
+                  Volume
+                </label>
+                <input 
+                  type="range" 
+                  value={volume}
+                  onChange={(e) => {setVolume(e.target.value)}}
+                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 mb-4"
+                />
                 <div className='w-2/4'>
                   <Select
                     options={options}
