@@ -53,7 +53,7 @@ export const generateQuizOptions = (quiz) => {
 }
 
 export const getRandomTimestamp = (duration) => {
-  const minGap = 5; // gap dist of song
+  const minGap = 15; // gap dist of song
   let maxStartSeconds;
 
   const randomSeconds = Math.floor(Math.random() * duration); // randomly choose a timeStamp in the song
