@@ -1,4 +1,4 @@
-This Project is created to help students prep for a listening quiz for MUS 106 in UC Davis.
+# This Project is created to help students prep for a listening quiz for MUS 106 in UC Davis.
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
