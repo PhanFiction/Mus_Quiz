@@ -18,6 +18,7 @@ module.exports = {
         "dark-gray": "#464947",
         "light-gray": "#5E625F",
         "green": "#44AA55",
+        "dark-mint-cream": "#757575",
       },
       fontFamily: {
         "kite-one": "Kite One",
