@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import dynamic from "next/dynamic";
 import Select from 'react-select';
 import Answer from '../components/UI/Answer/Answer';
-import { selectedItem, generateQuizOptions, getRandomTimestamp } from '../utils/songHelper';
+import { selectedItem, generateQuizOptions, getRandomTimestamp, answers, resetAnswers } from '../utils/songHelper';
 import { FaPlay, FaPause, FaRandom } from "react-icons/fa";
 import { BiReset } from "react-icons/bi";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
@@ -85,6 +85,8 @@ export default function Page() {
     setIsPlaying(!isPlaying);
   }
 
+  console.log(answers);
+
   // randomly play song
   const playRandom = () => setTimeStamp();
 
@@ -105,6 +107,7 @@ export default function Page() {
   }
 
   const nextQuiz = () => {
+    resetAnswers(selectedOption);
     if (page < 1) { 
       setPage(page + 1);
     } else {
@@ -170,6 +173,12 @@ export default function Page() {
                     </ActionButton>
                   </div>
                 }
+                <p>
+                  Music Size: {answers.size}
+                </p>
+                <button onClick={() => {answers.clear()}}>
+                  Reset Test
+                </button>
                 <label 
                   for="default-range" 
                   class="block mb-2 text-sm font-medium text-gray-900 text-dark-gray"

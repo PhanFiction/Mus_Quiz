@@ -454,6 +454,54 @@ const songs = {
     },
   ],
   "quiz_3": [
+    {
+      "id": 31,
+      "title": "Maybellene",
+      "artist": "Chuck Berry",
+      "link": "https://www.youtube.com/watch?v=75RiHJGfyUE&ab_channel=John1948ThreeA",
+    },
+    {
+      "id": 32,
+      "title": "Johnny B. Goode",
+      "artist": "Chuck Berry",
+      "link": "https://www.youtube.com/watch?v=6ROwVrF0Ceg&ab_channel=gaslightrecords"
+    },
+    {
+      "id": 33,
+      "title": "Peggy Sue",
+      "artist": "Buddy Holly & The Crickets",
+      "link": "https://www.youtube.com/watch?v=OUesbTObC9A&ab_channel=TheGrayCat"
+    },
+    {
+      "id": 34,
+      "title": "That'll Be the Day",
+      "artist": "Buddy Holly & The Crickets",
+      "link": "https://www.youtube.com/watch?v=9mDGcxbAusg&ab_channel=TheEdSullivanShow"
+    },
+    {
+      "id": 35,
+      "title": "Not Fade Away",
+      "artist": "Buddy Holly & The Crickets",
+      "link": "https://www.youtube.com/watch?v=NN2L84dvoag&ab_channel=MarvinPollei"
+    },
+    {
+      "id": 36,
+      "title": "Sh-Boom",
+      "artist": "The Chords",
+      "link": "https://www.youtube.com/watch?v=SBgQezOF8kY&ab_channel=BearWalken"
+    },
+    {
+      "id": 37,
+      "title": "Heart and Soul",
+      "artist": "The Four Aces",
+      "link": "https://www.youtube.com/watch?v=Pevk5swr0WU&ab_channel=Scout4Me1"
+    },
+    {
+      "id": 38,
+      "title": "Be My Baby",
+      "artist": "The Ronettes",
+      "link": "https://www.youtube.com/watch?v=AhzZIXvspI4&ab_channel=ClassicHitsStudio"
+    },
   ],
   "quiz_4": [],
 };
