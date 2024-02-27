@@ -59,7 +59,7 @@ export default function Page() {
   useEffect(() => {
     if (played > end) {
       setIsPlaying(false);
-      playerRef.current.seekTo(start, "seconds"); // is progrss of video reaches the end, reset back to beginnig of start   
+      playerRef.current.seekTo(start, "seconds"); // is progress of video reaches the end, reset back to beginnig of start   
     }
   }, [played]);
 
@@ -76,6 +76,12 @@ export default function Page() {
     playerRef.current.seekTo(startTime, "seconds");
   }
 
+  const playFullSong = () => {
+    setStart(0);
+    setEnd(duration);
+    playerRef.current.seekTo(0, "seconds");
+  }
+
   // Plays the song
   const playSong = () => {
     if (reset) {
@@ -84,8 +90,6 @@ export default function Page() {
     }
     setIsPlaying(!isPlaying);
   }
-
-  console.log(answers);
 
   // randomly play song
   const playRandom = () => setTimeStamp();
@@ -129,7 +133,7 @@ export default function Page() {
       <header className='bg-air-blue text-white p-4 text-center absolute w-screen'>
         <h1 className='text-2xl font-karma'>Mus 106 Quiz Practice</h1>
       </header>
-      <main className='bg-space-cadet flex flex-col justify-center min-h-screen'>
+      <main className='bg-space-cadet flex flex-col justify-center min-h-screen overflow-auto'>
         <section className='mt-24 w-11/12 sm:max-w-lg sm:mt-auto m-auto relative'>
           <div className="rounded-lg bg-mint-cream font-kite-one flex flex-col sm:flex-row text-center z-10 relative">
            {/* Questions area*/}
@@ -174,23 +178,28 @@ export default function Page() {
                   </div>
                 }
                 <p>
-                  Music Size: {answers.size}
+                  Music Question: {answers.size}
                 </p>
+                <button onClick={playFullSong}>
+                  Play Full Song
+                </button>
                 <button onClick={() => {answers.clear()}}>
                   Reset Test
                 </button>
-                <label 
-                  for="default-range" 
-                  class="block mb-2 text-sm font-medium text-gray-900 text-dark-gray"
-                >
-                  Volume
-                </label>
-                <input 
-                  type="range" 
-                  value={volume}
-                  onChange={(e) => {setVolume(e.target.value)}}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 mb-4"
-                />
+                <div className='flex items-center gap-4'>
+                  <label
+                    for="default-range"
+                    class="block text-md font-medium text-gray-900"
+                  >
+                    Volume
+                  </label>
+                  <input
+                    type="range"
+                    value={volume}
+                    onChange={(e) => {setVolume(e.target.value)}}
+                    class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                  />
+                </div>
                 <div className='flex gap-2'>
                   <div className='w-2/4'>
                     <Select
